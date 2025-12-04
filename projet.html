@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Mes Projets - Simon Lambert</title>
+
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="projet.html">Projet</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="card_back">
+            <h2>Borne d'Arcade</h2>
+            <div class="projet-container">
+                <div class="col-visuals">
+                    <figure>
+                        <img
+                            src="img/arcade.svg"
+                            alt="Maquette arcade SolidWorks"
+                        >
+                        <figcaption>Rendu 3D SolidWorks</figcaption>
+                    </figure>
+
+                    <div class="video-container">
+                        <video
+                            controls class="responsive-video"
+                        >
+                            <source
+                                src="video/project_demo.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support the audio element.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-infos">
+                    <h3>Fiche Technique</h3>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Composant</th>
+                                <th>Détail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mini-Ordinateur</td>
+                                <td>Raspberry Pi 4</td>
+                            </tr>
+                            <tr>
+                                <td>OS</td>
+                                <td>Recalbox</td>
+                            </tr>
+                            <tr>
+                                <td>Matériau</td>
+                                <td>Bois</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        Pour en savoir plus sur l'OS :
+                        <a href="https://www.recalbox.com/" target="_blank">
+                            Site officiel de Recalbox
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <footer>© 2025 Simon Lambert</footer>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+        <title>Contact - Simon Lambert</title>
+
+        <link rel="stylesheet" href="css/style.css" >
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="projet.html">Projet</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main id="card_back">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required >
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required >
+                </div>
+                <div class="form-group">
+                    <label for="sujet">Sujet :</label>
+                    <select id="sujet" name="sujet">
+                        <option value="info">Demande d'info</option>
+                        <option value="projet">Proposition de projet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message :</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit">Envoyer</button>
+            </form>
+            <aside class="audio-player">
+                <p>Ambiance sonore :</p>
+                <audio controls>
+                    <source src="audio/audio.mp3" type="audio/mpeg" >
+                    Your browser does not support the audio element.
+                </audio>
+            </aside>
+        </main>
+        <footer>
+            Nom, Prènom: Lambert Simon<br>Mail: lambertsimon26032007@gmail.com
+        </footer>
+    </body>
+</html>
