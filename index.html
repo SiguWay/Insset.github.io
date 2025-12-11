@@ -1,52 +1,1505 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
     <head>
-        <meta charset="UTF-8" >
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-        <title>Home - Portfolio</title>
-        <link rel="stylesheet" href="css/style.css" >
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Guide Complet Tailwind CSS</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                50: "#eff6ff",
+                                100: "#dbeafe",
+                                500: "#3b82f6",
+                                600: "#2563eb",
+                                700: "#1d4ed8",
+                                900: "#1e3a8a",
+                            },
+                        },
+                        animation: {
+                            "fade-in": "fadeIn 0.5s ease-out",
+                            "slow-bounce": "bounce 3s infinite",
+                        },
+                        keyframes: {
+                            fadeIn: {
+                                "0%": {
+                                    opacity: "0",
+                                    transform: "translateY(10px)",
+                                },
+                                "100%": {
+                                    opacity: "1",
+                                    transform: "translateY(0)",
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            /* Scrollbar personnalisée */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f5f9;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
+
+            .grid-bg {
+                background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+
+            /* Classe utilitaire pour les blocs de comparaison */
+            .comparison-box {
+                @apply bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 overflow-x-auto border border-slate-700;
+            }
+        </style>
     </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="projet.html">Projet</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <body
+        class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-100 selection:text-brand-900"
+    >
+        <nav
+            class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center gap-2">
+                        <svg
+                            class="w-8 h-8 text-brand-600"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path
+                                d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"
+                            />
+                        </svg>
+                        <span
+                            class="font-bold text-xl tracking-tight text-slate-900"
+                            >Tailwind<span class="text-brand-600"
+                                >Mastery</span
+                            ></span
+                        >
+                    </div>
+                    <div
+                        class="hidden md:flex space-x-8 text-sm font-medium text-slate-600"
+                    >
+                        <a
+                            href="#foundations"
+                            class="hover:text-brand-600 transition"
+                            >Fondations</a
+                        >
+                        <a
+                            href="#layout"
+                            class="hover:text-brand-600 transition"
+                            >Layout</a
+                        >
+                        <a
+                            href="#effects"
+                            class="hover:text-brand-600 transition"
+                            >Effets</a
+                        >
+                        <a
+                            href="#components"
+                            class="hover:text-brand-600 transition"
+                            >Composants</a
+                        >
+                        <a
+                            href="#quiz"
+                            class="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-slate-700 transition"
+                            >Quiz</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-        <main id="card_back">
-            <section class="head">
-                <h1>Simon <span class="highlight">Lambert</span></h1>
-                <p>Bienvenue sur mon portfolio numérique.</p>
-            </section>
-
-            <div class="bento-grid">
-                <article class="bento-item large">
-                    <a href="projet.html">
-                        <h3>Projet</h3>
-                        <p>Découvrir ma borne d'arcade</p>
-                    </a>
-                </article>
-
-                <div class="bento-item large">
-                    <a href="contact.html">
-                        <h4>Contact</h4>
-                        <p>Me laisser un message</p>
+        <header
+            class="relative overflow-hidden pt-16 pb-24 text-center px-4 grid-bg"
+        >
+            <div class="max-w-4xl mx-auto relative z-10">
+                <span
+                    class="inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 ring-1 ring-inset ring-brand-700/10 mb-6"
+                >
+                    Cheat Sheet Interactif
+                </span>
+                <h1
+                    class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6"
+                >
+                    Maîtrisez
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-cyan-500"
+                        >Tailwind CSS</span
+                    >
+                </h1>
+                <p
+                    class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed"
+                >
+                    Comparatifs en direct, exemples visuels et quiz interactif.
+                </p>
+                <div class="mt-10 flex justify-center gap-4">
+                    <a
+                        href="#foundations"
+                        class="rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 transition-all"
+                    >
+                        Commencer l'exploration
                     </a>
                 </div>
             </div>
-            <aside class="audio-player">
-                <p>Ambiance sonore :</p>
-                <audio controls>
-                    <source src="audio/audio.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </aside>
+        </header>
+
+        <main class="space-y-32 mb-24 max-w-7xl mx-auto px-6">
+            <section id="foundations" class="pt-12 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <span
+                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold text-sm"
+                        >Partie 1</span
+                    >
+                    <h2 class="text-3xl font-bold text-slate-900">
+                        Les Fondations
+                    </h2>
+                </div>
+
+                <div
+                    class="mb-12 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden"
+                >
+                    <div
+                        class="bg-slate-50 px-6 py-3 border-b border-slate-200 font-bold text-slate-700"
+                    >
+                        ⚡ Comparatif : Créer une boîte simple
+                    </div>
+                    <div
+                        class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200"
+                    >
+                        <div class="p-6">
+                            <h4
+                                class="text-red-500 font-bold mb-2 text-sm uppercase"
+                            >
+                                CSS Classique (Lourd)
+                            </h4>
+                            <div
+                                class="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4"
+                            >
+                                <span class="text-gray-500"
+                                    >/* style.css */</span
+                                ><br />
+                                .box {<br />
+                                &nbsp;&nbsp;background-color: #3b82f6;<br />
+                                &nbsp;&nbsp;padding: 1rem;<br />
+                                &nbsp;&nbsp;border-radius: 0.5rem;<br />
+                                &nbsp;&nbsp;color: white;<br />
+                                }
+                            </div>
+                            <div
+                                class="bg-blue-500 text-white p-4 rounded-lg inline-block"
+                            >
+                                Ma Boîte
+                            </div>
+                        </div>
+                        <div class="p-6 bg-blue-50/30">
+                            <h4
+                                class="text-green-600 font-bold mb-2 text-sm uppercase"
+                            >
+                                Tailwind (Rapide)
+                            </h4>
+                            <div
+                                class="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4"
+                            >
+                                <span class="text-gray-500"
+                                    >&lt;!-- index.html --&gt;</span
+                                ><br />
+                                &lt;div class="<span class="text-brand-400"
+                                    >bg-blue-500 p-4 rounded-lg text-white</span
+                                >"&gt;<br />
+                                &nbsp;&nbsp;Ma Boîte<br />
+                                &lt;/div&gt;
+                            </div>
+                            <div
+                                class="bg-blue-500 text-white p-4 rounded-lg inline-block"
+                            >
+                                Ma Boîte
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-sm border border-slate-200"
+                    >
+                        <h3
+                            class="font-bold text-lg mb-4 flex items-center gap-2"
+                        >
+                            🎨 Couleurs
+                        </h3>
+                        <div class="space-y-3 text-xs font-mono text-white">
+                            <div
+                                class="h-10 bg-blue-500 rounded flex items-center justify-center"
+                            >
+                                bg-blue-500
+                            </div>
+                            <div
+                                class="h-10 bg-blue-700 rounded flex items-center justify-center"
+                            >
+                                bg-blue-700
+                            </div>
+                            <div
+                                class="h-10 bg-black/50 rounded flex items-center justify-center backdrop-blur-sm"
+                            >
+                                bg-black/50
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-sm border border-slate-200"
+                    >
+                        <h3
+                            class="font-bold text-lg mb-4 flex items-center gap-2"
+                        >
+                            ✍️ Typographie
+                        </h3>
+                        <div class="space-y-2 border-l-2 border-slate-100 pl-4">
+                            <p class="text-xs text-slate-500">text-xs</p>
+                            <p class="text-base text-slate-700">text-base</p>
+                            <p class="text-xl font-bold text-slate-900">
+                                text-xl font-bold
+                            </p>
+                            <p
+                                class="text-lg font-light text-brand-600 text-right"
+                            >
+                                text-right
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-sm border border-slate-200"
+                    >
+                        <h3
+                            class="font-bold text-lg mb-4 flex items-center gap-2"
+                        >
+                            📐 Spacing
+                        </h3>
+                        <div
+                            class="bg-slate-100 p-4 rounded border border-dashed border-slate-400"
+                        >
+                            <div
+                                class="bg-blue-200 text-blue-800 text-center py-1 mb-2 text-xs rounded"
+                            >
+                                p-4 (Padding)
+                            </div>
+                            <div
+                                class="bg-white p-2 text-center text-xs border-2 border-red-500 rounded-full"
+                            >
+                                <div class="bg-green-100 mb-1">
+                                    mb-1 (Marge)
+                                </div>
+                                border-2 rounded-full
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="layout" class="pt-12 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <span
+                        class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-bold text-sm"
+                        >Partie 2</span
+                    >
+                    <h2 class="text-3xl font-bold text-slate-900">
+                        Layouts Modernes
+                    </h2>
+                </div>
+
+                <div
+                    class="mb-12 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden"
+                >
+                    <div
+                        class="bg-slate-50 px-6 py-3 border-b border-slate-200 font-bold text-slate-700"
+                    >
+                        ⚡ Comparatif : Centrer un élément
+                    </div>
+                    <div
+                        class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200"
+                    >
+                        <div class="p-6">
+                            <h4
+                                class="text-red-500 font-bold mb-2 text-sm uppercase"
+                            >
+                                CSS Classique
+                            </h4>
+                            <div
+                                class="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4"
+                            >
+                                .center-box {<br />
+                                &nbsp;&nbsp;display: flex;<br />
+                                &nbsp;&nbsp;justify-content: center;<br />
+                                &nbsp;&nbsp;align-items: center;<br />
+                                &nbsp;&nbsp;height: 6rem;<br />
+                                &nbsp;&nbsp;background: #eee;<br />
+                                }
+                            </div>
+                            <div
+                                class="flex justify-center items-center h-24 bg-gray-100 rounded"
+                            >
+                                <span class="bg-white p-2 rounded shadow"
+                                    >Centré</span
+                                >
+                            </div>
+                        </div>
+                        <div class="p-6 bg-purple-50/30">
+                            <h4
+                                class="text-green-600 font-bold mb-2 text-sm uppercase"
+                            >
+                                Tailwind
+                            </h4>
+                            <div
+                                class="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4"
+                            >
+                                &lt;div class="<span class="text-purple-400"
+                                    >flex justify-center items-center h-24
+                                    bg-gray-100</span
+                                >"&gt;<br />
+                                &nbsp;&nbsp;Centré<br />
+                                &lt;/div&gt;
+                            </div>
+                            <div
+                                class="flex justify-center items-center h-24 bg-gray-100 rounded"
+                            >
+                                <span class="bg-white p-2 rounded shadow"
+                                    >Centré</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-xl text-purple-700">
+                            📦 Flexbox
+                        </h3>
+                        <p class="text-sm text-slate-500">
+                            Barre de navigation simple.
+                        </p>
+                        <div class="relative group">
+                            <button
+                                onclick="copyCode(this)"
+                                class="absolute top-2 right-2 bg-slate-700 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+                            >
+                                Copier
+                            </button>
+                            <pre
+                                class="bg-slate-800 rounded-lg p-4 text-xs text-slate-300 font-mono overflow-x-auto"
+                            ><code>&lt;div class="flex justify-between items-center"&gt;...&lt;/div&gt;</code></pre>
+                        </div>
+                        <div
+                            class="bg-white border border-slate-300 p-4 rounded-lg flex items-center justify-between shadow-sm h-20"
+                        >
+                            <div
+                                class="bg-purple-500 text-white px-3 py-1 rounded"
+                            >
+                                Logo
+                            </div>
+                            <div
+                                class="bg-slate-100 px-2 py-1 text-slate-500 text-xs"
+                            >
+                                Space-between
+                            </div>
+                            <button
+                                class="bg-brand-500 text-white px-3 py-1 rounded"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-xl text-pink-600">🧱 Grid</h3>
+                        <p class="text-sm text-slate-500">
+                            Galerie 3 colonnes avec gap.
+                        </p>
+                        <div class="relative group">
+                            <button
+                                onclick="copyCode(this)"
+                                class="absolute top-2 right-2 bg-slate-700 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+                            >
+                                Copier
+                            </button>
+                            <pre
+                                class="bg-slate-800 rounded-lg p-4 text-xs text-slate-300 font-mono overflow-x-auto"
+                            ><code>&lt;div class="grid grid-cols-3 gap-4"&gt;...&lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div
+                                class="aspect-square bg-pink-100 rounded flex items-center justify-center text-pink-500 font-bold"
+                            >
+                                1
+                            </div>
+                            <div
+                                class="aspect-square bg-pink-300 rounded flex items-center justify-center text-pink-700 font-bold"
+                            >
+                                2
+                            </div>
+                            <div
+                                class="aspect-square bg-pink-500 rounded flex items-center justify-center text-white font-bold"
+                            >
+                                3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="effects" class="pt-12 scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <span
+                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold text-sm"
+                        >Partie 3</span
+                    >
+                    <h2 class="text-3xl font-bold text-slate-900">
+                        Effets & Animations
+                    </h2>
+                </div>
+
+                <div
+                    class="mb-12 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden"
+                >
+                    <div
+                        class="bg-slate-50 px-6 py-3 border-b border-slate-200 font-bold text-slate-700"
+                    >
+                        ⚡ Comparatif : Animation au survol
+                    </div>
+                    <div
+                        class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200"
+                    >
+                        <div class="p-6">
+                            <h4
+                                class="text-red-500 font-bold mb-2 text-sm uppercase"
+                            >
+                                CSS Classique
+                            </h4>
+                            <div
+                                class="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4"
+                            >
+                                .btn {<br />
+                                &nbsp;&nbsp;background: white;<br />
+                                &nbsp;&nbsp;transition: all 0.3s;<br />
+                                }<br />
+                                .btn:hover {<br />
+                                &nbsp;&nbsp;transform: translateY(-4px);<br />
+                                &nbsp;&nbsp;box-shadow: 0 10px 15px
+                                rgba(0,0,0,0.1);<br />
+                                }
+                            </div>
+                            <button
+                                class="px-4 py-2 bg-white border rounded transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                            >
+                                Survol
+                            </button>
+                        </div>
+                        <div class="p-6 bg-green-50/30">
+                            <h4
+                                class="text-green-600 font-bold mb-2 text-sm uppercase"
+                            >
+                                Tailwind
+                            </h4>
+                            <div
+                                class="bg-slate-900 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4"
+                            >
+                                &lt;button class="<span class="text-green-400"
+                                    >bg-white transition hover:-translate-y-1
+                                    hover:shadow-lg</span
+                                >"&gt;<br />
+                                &nbsp;&nbsp;Survol<br />
+                                &lt;/button&gt;
+                            </div>
+                            <button
+                                class="px-4 py-2 bg-white border rounded transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                            >
+                                Survol
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-gradient-to-br from-slate-100 to-slate-200 p-6 rounded-xl border border-slate-300"
+                    >
+                        <h3 class="font-bold mb-4">📱 Responsive</h3>
+                        <p class="text-xs mb-4 text-slate-500">
+                            Redimensionnez !
+                        </p>
+                        <div
+                            class="bg-white p-4 rounded shadow text-center transition-all duration-500"
+                        >
+                            <span class="block md:hidden text-red-500 font-bold"
+                                >Mobile</span
+                            >
+                            <span
+                                class="hidden md:block lg:hidden text-yellow-600 font-bold"
+                                >Tablette (md:)</span
+                            >
+                            <span
+                                class="hidden lg:block text-green-600 font-bold"
+                                >Desktop (lg:)</span
+                            >
+                        </div>
+                        <div
+                            class="mt-4 text-[10px] font-mono bg-white/50 p-2 rounded"
+                        >
+                            text-red-500 md:text-yellow-500
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-xl border border-slate-200"
+                    >
+                        <h3 class="font-bold mb-4">👻 Ombres</h3>
+                        <div class="flex flex-col gap-4 items-center">
+                            <button
+                                class="px-6 py-2 bg-white border border-slate-200 rounded shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300"
+                            >
+                                Survolez-moi !
+                            </button>
+                            <div class="text-[10px] text-slate-400 font-mono">
+                                shadow-sm hover:shadow-xl
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-xl border border-slate-200 overflow-hidden"
+                    >
+                        <h3 class="font-bold mb-4">✨ Animations</h3>
+                        <div class="flex justify-around items-center h-24">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-8 h-8 bg-blue-500 rounded-full animate-bounce"
+                                ></div>
+                                <span class="text-[10px] mt-2 text-slate-400"
+                                    >bounce</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-8 h-8 bg-purple-500 rounded-full animate-ping"
+                                ></div>
+                                <span class="text-[10px] mt-2 text-slate-400"
+                                    >ping</span
+                                >
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"
+                                ></div>
+                                <span class="text-[10px] mt-2 text-slate-400"
+                                    >spin</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="components" class="pt-12 scroll-mt-24">
+                <div class="text-center mb-16">
+                    <span
+                        class="bg-brand-100 text-brand-700 px-3 py-1 rounded-full font-bold text-sm"
+                        >Synthèse</span
+                    >
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-4">
+                        Composants Complets
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-600">
+                        Assemblage des briques élémentaires pour créer des
+                        interfaces réelles.
+                    </p>
+                </div>
+
+                <div class="space-y-20">
+                    <div class="grid lg:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">
+                                1. La Carte "Profil"
+                            </h3>
+                            <p class="text-slate-600 mb-6 text-sm">
+                                Utilise Flexbox, arrondis, ombres, dégradés et
+                                position absolue.
+                            </p>
+                            <div
+                                class="p-10 bg-slate-100 rounded-xl border border-slate-200 flex justify-center items-center"
+                            >
+                                <div
+                                    class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                                >
+                                    <div
+                                        class="h-24 bg-gradient-to-r from-cyan-500 to-blue-500"
+                                    ></div>
+                                    <div
+                                        class="flex flex-col items-center pb-10"
+                                    >
+                                        <div
+                                            class="relative w-24 h-24 mb-3 rounded-full shadow-lg -mt-12 border-4 border-white bg-white overflow-hidden"
+                                        >
+                                            <img
+                                                class="w-full h-full object-cover"
+                                                src="https://api.dicebear.com/9.x/avataaars/svg?seed=Felix"
+                                                alt="Avatar image"
+                                            />
+                                        </div>
+                                        <h5
+                                            class="mb-1 text-xl font-medium text-gray-900"
+                                        >
+                                            Thomas Dupont
+                                        </h5>
+                                        <span class="text-sm text-gray-500"
+                                            >Développeur Front-End</span
+                                        >
+                                        <div
+                                            class="flex mt-4 space-x-3 md:mt-6"
+                                        >
+                                            <a
+                                                href="#"
+                                                class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-brand-700 rounded-lg hover:bg-brand-800 focus:ring-4 focus:outline-none focus:ring-brand-300"
+                                                >Ajouter</a
+                                            >
+                                            <a
+                                                href="#"
+                                                class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
+                                                >Message</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <button
+                                onclick="copyCode(this)"
+                                class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+                            >
+                                Copier
+                            </button>
+                            <pre
+                                class="bg-slate-900 text-slate-300 p-6 rounded-xl overflow-x-auto text-xs leading-relaxed h-full max-h-[400px]"
+                            ><code>&lt;div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden"&gt;
+  &lt;div class="h-24 bg-gradient-to-r from-cyan-500 to-blue-500"&gt;&lt;/div&gt;
+  &lt;div class="flex flex-col items-center pb-10"&gt;
+    &lt;img class="w-24 h-24 mb-3 rounded-full shadow-lg -mt-12 border-4 border-white" src="..." alt="Avatar"/&gt;
+    &lt;h5 class="mb-1 text-xl font-medium text-gray-900"&gt;Thomas Dupont&lt;/h5&gt;
+    &lt;span class="text-sm text-gray-500"&gt;Développeur Front-End&lt;/span&gt;
+    &lt;div class="flex mt-4 space-x-3"&gt;
+      &lt;a href="#" class="px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800"&gt;
+        Ajouter
+      &lt;/a&gt;
+      &lt;a href="#" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100"&gt;
+        Message
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">
+                                2. Alertes & États
+                            </h3>
+                            <p class="text-slate-600 mb-6 text-sm">
+                                Gestion des couleurs de statut (Succès, Erreur)
+                                avec SVG inline.
+                            </p>
+                            <div
+                                class="p-10 bg-slate-100 rounded-xl border border-slate-200 space-y-4"
+                            >
+                                <div
+                                    class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg"
+                                    role="alert"
+                                >
+                                    <svg
+                                        class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-medium"
+                                            >Succès !</span
+                                        >
+                                        Votre profil a été mis à jour.
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg"
+                                    role="alert"
+                                >
+                                    <svg
+                                        class="flex-shrink-0 inline w-5 h-5 mr-3"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-medium"
+                                            >Erreur !</span
+                                        >
+                                        Impossible de contacter le serveur.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group h-full">
+                            <button
+                                onclick="copyCode(this)"
+                                class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+                            >
+                                Copier
+                            </button>
+                            <pre
+                                class="bg-slate-900 text-slate-300 p-6 rounded-xl overflow-x-auto text-xs leading-relaxed h-full"
+                            ><code>&lt;!-- Succès --&gt;
+&lt;div class="flex p-4 text-sm text-green-700 bg-green-100 rounded-lg"&gt;
+  &lt;svg class="w-5 h-5 mr-3" fill="currentColor" ...&gt;&lt;/svg&gt;
+  &lt;div&gt;
+    &lt;span class="font-medium"&gt;Succès !&lt;/span&gt; Mise à jour effectuée.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Erreur --&gt;
+&lt;div class="flex p-4 text-sm text-red-700 bg-red-100 rounded-lg"&gt;
+  &lt;svg class="w-5 h-5 mr-3" fill="currentColor" ...&gt;&lt;/svg&gt;
+  &lt;div&gt;
+    &lt;span class="font-medium"&gt;Erreur !&lt;/span&gt; Problème serveur.
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8 items-start">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">
+                                3. Formulaire Moderne
+                            </h3>
+                            <p class="text-slate-600 mb-6 text-sm">
+                                Inputs stylisés avec états "focus:ring" pour
+                                l'accessibilité.
+                            </p>
+                            <div
+                                class="p-10 bg-slate-100 rounded-xl border border-slate-200 flex justify-center"
+                            >
+                                <form
+                                    class="w-full max-w-sm bg-white p-6 rounded-lg shadow-sm border border-slate-200"
+                                >
+                                    <div class="mb-4">
+                                        <label
+                                            class="block text-gray-700 text-sm font-bold mb-2"
+                                            for="username"
+                                        >
+                                            Nom d'utilisateur
+                                        </label>
+                                        <input
+                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
+                                            id="username"
+                                            type="text"
+                                            placeholder="Entrez votre nom"
+                                        />
+                                    </div>
+                                    <div class="mb-6">
+                                        <label
+                                            class="block text-gray-700 text-sm font-bold mb-2"
+                                            for="password"
+                                        >
+                                            Mot de passe
+                                        </label>
+                                        <input
+                                            class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:ring-2 focus:ring-red-500"
+                                            id="password"
+                                            type="password"
+                                            placeholder="******************"
+                                        />
+                                        <p class="text-red-500 text-xs italic">
+                                            Veuillez choisir un mot de passe
+                                            fort.
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between"
+                                    >
+                                        <button
+                                            class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition"
+                                            type="button"
+                                        >
+                                            Connexion
+                                        </button>
+                                        <a
+                                            class="inline-block align-baseline font-bold text-sm text-brand-600 hover:text-brand-800"
+                                            href="#"
+                                        >
+                                            Oublié ?
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="relative group h-full">
+                            <button
+                                onclick="copyCode(this)"
+                                class="absolute top-4 right-4 bg-slate-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition"
+                            >
+                                Copier
+                            </button>
+                            <pre
+                                class="bg-slate-900 text-slate-300 p-6 rounded-xl overflow-x-auto text-xs leading-relaxed h-full"
+                            ><code>&lt;div class="mb-4"&gt;
+  &lt;label class="block text-gray-700 text-sm font-bold mb-2"&gt;
+    Nom d'utilisateur
+  &lt;/label&gt;
+  &lt;input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" type="text" placeholder="Nom"&gt;
+&lt;/div&gt;
+
+&lt;button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition"&gt;
+  Connexion
+&lt;/button&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quiz" class="max-w-4xl mx-auto px-4 scroll-mt-24">
+                <div class="text-center mb-8">
+                    <span
+                        class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase"
+                        >Gamification</span
+                    >
+                    <h2 class="text-3xl font-bold text-slate-900 mt-4">
+                        Test de connaissances
+                    </h2>
+                    <p class="text-slate-500">
+                        Prouvez que vous êtes un expert Tailwind !
+                    </p>
+                </div>
+
+                <div
+                    id="kahoot-app"
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 min-h-[400px] relative"
+                >
+                    <div
+                        id="start-screen"
+                        class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 z-20 p-8 text-center"
+                    >
+                        <div
+                            class="w-24 h-24 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg rotate-3"
+                        >
+                            <svg
+                                class="w-12 h-12 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                                ></path>
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-800 mb-2">
+                            Prêt pour le Quiz ?
+                        </h3>
+                        <p class="text-slate-500 mb-8">
+                            12 questions pour tester votre compréhension.
+                        </p>
+                        <button
+                            onclick="startQuiz()"
+                            class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-[0_4px_0_rgb(15,23,42)] hover:shadow-[0_2px_0_rgb(15,23,42)] hover:translate-y-[2px] transition-all"
+                        >
+                            Commencer le Quiz
+                        </button>
+                    </div>
+
+                    <div
+                        id="result-screen"
+                        class="hidden absolute inset-0 flex-col items-center justify-center bg-slate-50 z-20 p-8 text-center"
+                    >
+                        <h3 class="text-4xl font-black text-slate-800 mb-4">
+                            Terminé !
+                        </h3>
+                        <div class="text-lg text-slate-600 mb-2">
+                            Votre score final :
+                        </div>
+                        <div
+                            class="text-6xl font-black text-blue-600 mb-8"
+                            id="final-score"
+                        >
+                            0 / 12
+                        </div>
+                        <p
+                            id="feedback-text"
+                            class="text-slate-500 mb-8 font-medium"
+                        >
+                            Pas mal !
+                        </p>
+                        <button
+                            onclick="resetQuiz()"
+                            class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-[0_4px_0_rgb(29,78,216)] hover:shadow-[0_2px_0_rgb(29,78,216)] hover:translate-y-[2px] transition-all"
+                        >
+                            Rejouer
+                        </button>
+                    </div>
+
+                    <div
+                        id="game-screen"
+                        class="hidden flex flex-col h-full p-6"
+                    >
+                        <div
+                            class="flex justify-between items-center mb-6 text-sm font-bold text-slate-500"
+                        >
+                            <span id="question-counter">Question 1/12</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded-lg"
+                                >Score:
+                                <span id="current-score" class="text-blue-600"
+                                    >0</span
+                                ></span
+                            >
+                        </div>
+
+                        <div
+                            class="flex-grow flex items-center justify-center mb-8"
+                        >
+                            <h3
+                                id="question-text"
+                                class="text-xl md:text-2xl font-bold text-center text-slate-800 leading-tight"
+                            ></h3>
+                        </div>
+
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-2 gap-4"
+                            id="answers-container"
+                        ></div>
+
+                        <div class="mt-6 flex justify-end h-12">
+                            <button
+                                id="next-btn"
+                                onclick="nextQuestion()"
+                                class="hidden bg-slate-800 text-white px-6 py-2 rounded-lg font-bold hover:bg-slate-700 transition"
+                            >
+                                Question Suivante →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
-        <footer>© 2025 Simon Lambert</footer>
+        <footer
+            class="bg-slate-900 text-slate-400 py-12 text-center text-sm border-t border-slate-800"
+        >
+            <p>
+                Démo créée pour illustrer le cours d'introduction à Tailwind
+                CSS.
+            </p>
+        </footer>
+
+        <script>
+            // --- LOGIQUE COPY CODE ---
+            function copyCode(btn) {
+                const codeBlock = btn.nextElementSibling;
+                const text = codeBlock.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = btn.textContent;
+                    btn.textContent = "Copié !";
+                    btn.classList.add("bg-green-600");
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.classList.remove("bg-green-600");
+                    }, 2000);
+                });
+            }
+
+            // --- LOGIQUE QUIZ ---
+            const questions = [
+                {
+                    text: "Quelle est la différence fondamentale entre Bootstrap et Tailwind ?",
+                    answers: [
+                        {
+                            text: "Tailwind oblige à écrire le CSS à part",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Bootstrap est pour le Backend",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Tailwind fournit des utilitaires (briques), Bootstrap des composants (châteaux)",
+                            correct: true,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Tailwind interdit la personnalisation",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Comment applique-t-on un style avec l'approche 'Utility-First' ?",
+                    answers: [
+                        {
+                            text: "Via des classes explicites dans le HTML (text-xl, bg-blue-500)",
+                            correct: true,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "En créant une classe .mon-bouton dans le CSS",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Via JavaScript uniquement",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "En style inline (attribut style='')",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Quel est l'avantage majeur pour le flux de travail (workflow) ?",
+                    answers: [
+                        {
+                            text: "Génération du code backend",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Amélioration automatique du SEO",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Compatibilité IE6",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Rapidité : on évite les allers-retours entre fichiers",
+                            correct: true,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Comment Tailwind gère-t-il le survol (hover) ?",
+                    answers: [
+                        {
+                            text: "Avec du JavaScript",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Avec des préfixes HTML (hover:bg-blue-700)",
+                            correct: true,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Dans un fichier séparé",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Ce n'est pas possible",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Comment Tailwind résout-il l'incohérence visuelle ?",
+                    answers: [
+                        {
+                            text: "En imposant une grille et une échelle normalisée",
+                            correct: true,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "En générant des couleurs au hasard",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "En bloquant le code pour les juniors",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "En utilisant des pourcentages partout",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Quel fichier sert de centre de contrôle (config) ?",
+                    answers: [
+                        {
+                            text: "style.css",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "index.html",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "tailwind.config.js",
+                            correct: true,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "config.json",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Quelle syntaxe est utilisée pour le Responsive Design ?",
+                    answers: [
+                        {
+                            text: "Fichiers séparés (mobile.css)",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Détection JS automatique",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Media queries manuelles",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Préfixes liés à la taille (ex: md:w-1/2)",
+                            correct: true,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Pourquoi le fichier CSS final est-il si léger ?",
+                    answers: [
+                        {
+                            text: "Compression d'image",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Il ne contient que le mobile",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Il purge les classes non utilisées (JIT)",
+                            correct: true,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Il est en fait très lourd",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Quel est le 'choc' visuel principal au début ?",
+                    answers: [
+                        {
+                            text: "Le HTML semble chargé / pollué",
+                            correct: true,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Le manque de documentation",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Le noir et blanc obligatoire",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "L'incompatibilité React",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Comment obtenir des composants tout faits ?",
+                    answers: [
+                        {
+                            text: "Tout coder à la main",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Utiliser DaisyUI, Tailwind UI, etc.",
+                            correct: true,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Importer Bootstrap par dessus",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Revenir au CSS pur",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Avantage pour la maintenance / suppression de code ?",
+                    answers: [
+                        {
+                            text: "Archivage automatique",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Interdiction de supprimer",
+                            correct: false,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Supprimer le HTML supprime le style (pas de code mort)",
+                            correct: true,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Suppression manuelle requise",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+                {
+                    text: "Quel problème de 'Naming' (nommage) est résolu ?",
+                    answers: [
+                        {
+                            text: "Nommage des fichiers JS",
+                            correct: false,
+                            color: "bg-red-500",
+                        },
+                        {
+                            text: "Plus besoin d'inventer des noms de classes arbitraires",
+                            correct: true,
+                            color: "bg-blue-500",
+                        },
+                        {
+                            text: "Nommage de domaine",
+                            correct: false,
+                            color: "bg-yellow-500",
+                        },
+                        {
+                            text: "Nommage des variables DB",
+                            correct: false,
+                            color: "bg-green-600",
+                        },
+                    ],
+                },
+            ];
+
+            let currentQuestion = 0;
+            let score = 0;
+            let hasAnswered = false;
+
+            // Éléments du DOM
+            const startScreen = document.getElementById("start-screen");
+            const gameScreen = document.getElementById("game-screen");
+            const resultScreen = document.getElementById("result-screen");
+            const questionText = document.getElementById("question-text");
+            const answersContainer =
+                document.getElementById("answers-container");
+            const nextBtn = document.getElementById("next-btn");
+            const scoreDisplay = document.getElementById("current-score");
+            const counterDisplay = document.getElementById("question-counter");
+
+            // Démarrer le jeu
+            function startQuiz() {
+                startScreen.classList.add("hidden");
+                gameScreen.classList.remove("hidden");
+                gameScreen.classList.add("flex");
+                currentQuestion = 0;
+                score = 0;
+                updateScore();
+                loadQuestion();
+            }
+
+            // Charger une question
+            function loadQuestion() {
+                hasAnswered = false;
+                nextBtn.classList.add("hidden");
+
+                const q = questions[currentQuestion];
+                questionText.textContent = q.text;
+                counterDisplay.textContent = `Question ${currentQuestion + 1}/${questions.length}`;
+
+                answersContainer.innerHTML = "";
+
+                // Formes décoratives pour imiter Kahoot
+                const shapes = ["▲", "◆", "●", "■"];
+
+                q.answers.forEach((ans, index) => {
+                    const btn = document.createElement("button");
+                    // Classes Tailwind pour le style Kahoot (gros boutons colorés avec ombre 3D)
+                    btn.className = `${ans.color} text-white font-bold p-6 rounded-xl shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-[0_2px_0_rgba(0,0,0,0.2)] hover:translate-y-[2px] transition-all text-left flex items-center gap-4`;
+
+                    btn.innerHTML = `
+                <span class="bg-black/20 w-8 h-8 flex items-center justify-center rounded text-sm">${shapes[index]}</span>
+                <span class="flex-1">${ans.text}</span>
+            `;
+
+                    btn.onclick = () => checkAnswer(ans.correct, btn);
+                    answersContainer.appendChild(btn);
+                });
+            }
+
+            // Vérifier la réponse
+            function checkAnswer(isCorrect, btnElement) {
+                if (hasAnswered) return;
+                hasAnswered = true;
+
+                const allButtons = answersContainer.querySelectorAll("button");
+
+                // Désactiver tous les boutons et réduire l'opacité de ceux non cliqués
+                allButtons.forEach((b) => {
+                    b.classList.add("cursor-not-allowed", "opacity-50");
+                    b.onclick = null; // Empêcher d'autres clics
+                });
+
+                // Mettre en évidence le bouton cliqué
+                btnElement.classList.remove("opacity-50");
+
+                if (isCorrect) {
+                    score++;
+                    updateScore();
+                    // Effet visuel succès
+                    btnElement.innerHTML += `<span class="text-2xl ml-2">✅</span>`;
+                    // Animation confetti simple (optionnel, on reste sur du CSS)
+                } else {
+                    // Effet visuel erreur
+                    btnElement.innerHTML += `<span class="text-2xl ml-2">❌</span>`;
+                    // Montrer la bonne réponse
+                    questions[currentQuestion].answers.forEach((ans, idx) => {
+                        if (ans.correct) {
+                            allButtons[idx].classList.remove("opacity-50");
+                            allButtons[idx].classList.add(
+                                "ring-4",
+                                "ring-green-400",
+                            );
+                            allButtons[idx].innerHTML +=
+                                `<span class="text-2xl ml-2">👈</span>`;
+                        }
+                    });
+                }
+
+                // Afficher le bouton suivant
+                nextBtn.classList.remove("hidden");
+            }
+
+            // Passer à la question suivante
+            function nextQuestion() {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            }
+
+            // Mettre à jour le score
+            function updateScore() {
+                scoreDisplay.innerText = score;
+            }
+
+            // Fin du jeu
+            function showResults() {
+                gameScreen.classList.add("hidden");
+                gameScreen.classList.remove("flex");
+                resultScreen.classList.remove("hidden");
+                resultScreen.classList.add("flex");
+
+                document.getElementById("final-score").textContent =
+                    `${score} / ${questions.length}`;
+
+                const feedback = document.getElementById("feedback-text");
+                if (score === questions.length)
+                    feedback.textContent =
+                        "Incroyable ! Un vrai maître Tailwind 🏆";
+                else if (score > 8)
+                    feedback.textContent =
+                        "Excellent travail ! C'est presque parfait 👏";
+                else if (score > 5)
+                    feedback.textContent =
+                        "Bien joué, vous avez compris les bases 👍";
+                else
+                    feedback.textContent =
+                        "Ne lâchez rien, relisez le cours et réessayez 💪";
+            }
+
+            // Reset
+            function resetQuiz() {
+                resultScreen.classList.add("hidden");
+                startQuiz();
+            }
+        </script>
     </body>
 </html>
